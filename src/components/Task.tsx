@@ -1,8 +1,13 @@
-function Task({ completed, description }) {
+type TaskProps = {
+    completed: boolean;
+    description: string;
+};
+
+function Task({ completed, description }: TaskProps) {
     return (
         <li className={completed ? 'completed' : ''}>
             <div className="view">
-                <input className="toggle" type="checkbox" checked={completed} />
+                <input className="toggle" type="checkbox" />
                 <label>
                     <span className="description">{description}</span>
                 </label>

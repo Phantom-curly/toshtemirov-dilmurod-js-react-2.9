@@ -6,6 +6,7 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/toshtemirov-dilmurod-js-react-2.9/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

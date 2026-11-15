@@ -1,14 +1,25 @@
 import Task from './Task';
 
-function TaskList() {
+type TaskListProps = {
+    tasks: { id: number; description: string; completed: boolean }[];
+    onCheck: (id: number) => void;
+    onDelete: (id: number) => void;
+    onEdit: (id: number, newDescription: string) => void;
+};
+
+function TaskList({ tasks, onCheck, onDelete, onEdit }: TaskListProps) {
     return (
         <ul className="todo-list">
-            <Task completed={true} description="Completed task">
-            </Task>
-            <Task completed={false} description="Editing task">
-            </Task>
-            <Task completed={false} description="Active task">
-            </Task>
+            {tasks.map((task) => (
+                <Task
+                    key={task.id}
+                    completed={task.completed}
+                    description={task.description}
+                    onCheck={() => onCheck(task.id)}
+                    onDelete={() => onDelete(task.id)}
+                    onEdit={(text) => onEdit(task.id, text)}
+                />
+            ))}
         </ul>
     );
 }
